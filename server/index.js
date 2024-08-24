@@ -14,8 +14,8 @@ async function connectDB() {
     await client.connect();
     console.log('Connected to MongoDB');
 
-    const db = client.db('nome_do_banco');
-    collection = db.collection('nome_da_coleção');
+    const db = client.db('times');
+    collection = db.collection('times');
 
   } catch (err) {
     console.error('Failed to connect to MongoDB', err);
@@ -27,78 +27,80 @@ connectDB();
 app.use(express.json()); 
 
 
-app.post('/matriculas', async (req, res) => {
+app.post('/times', async (req, res) => {
   try {
-    const novaMatricula = req.body;
+    const novoTime = req.body;
 
     //complete o código
-    
-    res.status(201).json({ message: 'Matrícula criada com sucesso', matriculaId: result.insertedId });
+    const result = await collection.insertOne(novoTime);
+    res.status(201).json({ message: 'Time cadastrado com sucesso', timesId: result.insertedId });
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao criar matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao cadastrar time', error: err });
   }
 });
 
-app.get('/matriculas', async (req, res) => {
+app.get('/times', async (req, res) => {
   try {
-    //complete o código
-    res.status(200).json(matriculas);
+    //complete o código(feito)
+
+    const times = await collection.find().toArray();
+    res.status(200).json(times);
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao buscar matrículas', error: err });
+    res.status(500).json({ message: 'Erro ao buscar times', error: err });
   }
 });
 
 const { ObjectId } = require('mongodb');
 
-app.get('/matriculas/:id', async (req, res) => {
+app.get('/times/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const newId =  new ObjectId(id);
 
     //complete o código
 
-    if (!matricula) {
-      res.status(404).json({ message: 'Matrícula não encontrada' });
+    if (!times) {
+      res.status(404).json({ message: 'time não encontrada' });
     } else {
-      res.status(200).json(matricula);
+      res.status(200).json(times);
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao buscar matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao buscar time', error: err });
   }
 });
 
-app.put('/matriculas/:id', async (req, res) => {
+app.put('/times/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const newId =  new ObjectId(id);
     const atualizacao = req.body;
 
     //complete o código
-
+    const result = await collection.updateOne( { _id: newId }, { $set: atualizacao });
     if (result.matchedCount === 0) {
-      res.status(404).json({ message: 'Matrícula não encontrada' });
+      res.status(404).json({ message: 'Time não encontrada' });
     } else {
-      res.status(200).json({ message: 'Matrícula atualizada com sucesso' });
+      res.status(200).json({ message: 'Time atualizada com sucesso' });
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao atualizar matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao atualizar Time', error: err });
   }
 });
 
-app.delete('/matriculas/:id', async (req, res) => {
+app.delete('/times/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const newId =  new ObjectId(id);
-
+    const result = await times.deleteOne({_id: newId})
     //complete o código
 
     if (result.deletedCount === 0) {
-      res.status(404).json({ message: 'Matrícula não encontrada' });
+      res.status(404).json({ message: 'Time não encontrado' });
     } else {
-      res.status(200).json({ message: 'Matrícula excluída com sucesso' });
+      res.status(200).json({ message: 'Time excluído com sucesso' });
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao excluir matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao excluir Time', error: err });
   }
 });
 

@@ -1,0 +1,1 @@
+db.times.insertMany([{time:"ifms", jogador:"ana", camisa:"12"},{time:"jlp",jogador:"maria",camisa:"21"}]);
