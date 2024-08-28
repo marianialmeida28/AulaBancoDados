@@ -11,9 +11,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <BrowserRouter>
             <Routes>
                   <Route path="/" element={ <Home/> }/>
-                  <Route path="/matricula/cadastrar" element={ <CreateMatricula/> }/>
-                  <Route path="/matriculas" element={ <ReadMatriculas/> }/>
-                  <Route path="/matriculas/alterar" element={ <UpdateMatricula/>}/>
+                  <Route path="/times/cadastrar" element={ <CreateMatricula/> }/>
+                  <Route path="/times" element={ <ReadMatriculas/> }/>
+                  <Route path="/times/alterar" element={ <UpdateMatricula/>}/>
             </Routes> 
       </BrowserRouter>
   </React.StrictMode>,

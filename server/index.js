@@ -91,7 +91,7 @@ app.delete('/times/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const newId =  new ObjectId(id);
-    const result = await times.deleteOne({_id: newId})
+    const result = await collection.deleteOne({_id: newId});
     //complete o código
 
     if (result.deletedCount === 0) {
