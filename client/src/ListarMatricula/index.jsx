@@ -43,8 +43,8 @@ export default function ReadTimes() {
         <thead>
           <tr>
             <th>Código do Jogador</th>
-            <th>Time</th>
             <th>Jogador</th>
+            <th>Time</th>
             <th>Camisa</th>
             <th>Ações</th>
           </tr>
@@ -53,9 +53,9 @@ export default function ReadTimes() {
           {times.map((times) => (
             <tr key={times._id}>
               <td>{times._id}</td>
-              <td>{times.Time}</td>
-              <td>{times.Jogador}</td>
-              <td>{times.Camisa}</td>
+              <td>{times.jogador}</td>
+              <td>{times.time}</td>
+              <td>{times.camisa}</td>
               <td>
                 <button onClick={() => handleDelete(times._id)}>Excluir</button>
               </td>

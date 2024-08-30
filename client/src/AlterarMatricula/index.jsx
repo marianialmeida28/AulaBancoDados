@@ -46,21 +46,21 @@ export default function UpdateTime() {
       <input
         type="text"
         placeholder="Nome do jogador"
-        value={Jogador}
+        value={jogador}
         onChange={(e) => setJogador(e.target.value)}
         required
       />
       <input
         type="text"
         placeholder="Time"
-        value={Time}
+        value={time}
         onChange={(e) => setTime(e.target.value)}
         required
       />
       <input
         type="text"
         placeholder="Camisa"
-        value={Camisa}
+        value={camisa}
         onChange={(e) => setCamisa(e.target.value)}
         required
       />

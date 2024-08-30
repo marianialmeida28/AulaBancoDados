@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function CreateTimes() {
-  const [Time, setTime] = useState('');
-  const [Jogador, setJogador] = useState('');
+  const [time, setTime] = useState('');
+  const [jogador, setJogador] = useState('');
   const [camisa, setCamisa] = useState('');
 
   const navigate = useNavigate();
@@ -23,9 +23,9 @@ export default function CreateTimes() {
       });
       if (response.ok) {
         alert('Time criado com sucesso!');
-        setAluno('');
-        setTurma('');
-        setCurso('');
+        setTime('');
+        setJogador('');
+        setCamisa('');
         navigate("/Times");
       } else {
         alert('Erro ao criar time.');
