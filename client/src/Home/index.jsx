@@ -4,7 +4,7 @@ import '../globals.css';
 export default function Home() {
     return (
         <div className='container'>
-            <h2>Gerenciar Times</h2>
+            <h1>Gerenciar Times</h1>
             <div className="card-container">
                 <Link to="/times/cadastrar" className="card">
                     <div>Registrar Jogador</div>

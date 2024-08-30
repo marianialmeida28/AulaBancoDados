@@ -38,7 +38,7 @@ export default function ReadTimes() {
 
   return (
     <div className='container'>
-      <h2>Lista de Jogadores</h2>
+      <h1>Lista de Jogadores</h1>
       <table  className="table-container" border="1">
         <thead>
           <tr>
