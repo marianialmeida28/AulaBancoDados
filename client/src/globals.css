@@ -35,7 +35,7 @@ body {
     justify-content: center;
     padding: 20px;
     min-height: 100vh;
-    background-color: #121212;
+    background-image: linear-gradient(purple, rgb(22, 0, 22), black);
   }
   
   .form-container {
